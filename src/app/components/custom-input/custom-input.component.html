@@ -1,0 +1,38 @@
+<div class="row">
+  <!-- label -->
+  <label
+    class="form-control"
+    [ngClass]="{
+      error: formField?.invalid && (formField?.dirty || !formField?.untouched)
+    }"
+  >
+    {{ todoItemContent?.label }}
+  </label>
+  <!-- Input -->
+  <input
+    #customInput
+    (blur)="onFocusOut()"
+    (change)="onValueChanged($event)"
+    name="{{ todoItemContent?.id }}"
+    id="{{ todoItemContent?.id }}"
+    type="text"
+    placeholder="{{ todoItemContent?.placeholder }}"
+    [disabled]="todoItemContent?.disabled"
+    [value]="inputVal"
+    [attr.maxlength]="todoItemContent?.maxLen"
+    class="form-control"
+    [ngClass]="{
+      error: formField?.invalid && (formField?.dirty || !formField?.untouched)
+    }"
+  />
+  <!-- Feedback -->
+  <div
+    *ngIf="formField?.invalid"
+    class="feedback form-control"
+    [ngClass]="{
+      error: formField?.invalid && (formField?.dirty || formField?.touched)
+    }"
+  >
+    <p></p>
+  </div>
+</div>
