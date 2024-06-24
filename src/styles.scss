@@ -1,3 +1,5 @@
+@import "../src/assets/mixin";
+
 /* You can add global styles to this file, and also import other style files */
 *,
 *::before,
@@ -69,13 +71,14 @@ label {
   }
 
   &.form-control {
-    font-size: 25px;
+    font-size: 22px;
     padding: 0.375rem 0;
   }
 }
 
 p.error,
-div.error-message {
+div.error,
+span.error {
   color: red;
   padding-bottom: 10px;
 }
@@ -85,16 +88,27 @@ div.component-container {
   margin: 0 auto;
 }
 
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  @include response(md) {
+    flex-direction: column;
+  }
+}
+
 input {
-  height: 50px;
   padding: 5px;
-  margin-bottom: 20px;
+  height: 50px;
   border-radius: 3px;
   background: #fdfdfd;
   border: 1px solid #597183;
 
-  .form-control {
+  &.form-control {
     font-size: 20px;
+    border-radius: 10px;
   }
 
   &.error {
@@ -115,10 +129,34 @@ input {
 }
 
 input[type="submit"],
-input[type="button"] {
-  min-width: 120px;
+button {
+  min-width: 200px;
+  margin-bottom: 10px;
+
+  &:disabled {
+    pointer-events: none;
+    border: 1px solid #ccc;
+  }
 }
 
-input[type="text"] {
-  min-width: 250px;
+input[type="text"],
+textarea {
+  width: 350px;
+  margin-bottom: 10px;
+
+  @include response(sm) {
+    width: 250px;
+  }
+}
+
+textarea {
+  height: 150px;
+
+  &.error {
+    border: 1px solid #c62b2b;
+  }
+  &.form-control {
+    font-size: 20px;
+    border-radius: 10px;
+  }
 }

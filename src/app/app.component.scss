@@ -1,3 +1,5 @@
+@import "../assets/mixin";
+
 header {
   border-bottom: 2px solid black;
   .header-container {
@@ -10,6 +12,7 @@ header {
       align-items: center;
       padding: 10px;
     }
+
     nav {
       height: 50px;
       padding: 0 10px;
@@ -46,4 +49,8 @@ header {
   width: 90%;
   margin: 0 auto;
   padding: 10px;
+
+  @include response(md) {
+    width: 100%;
+  }
 }

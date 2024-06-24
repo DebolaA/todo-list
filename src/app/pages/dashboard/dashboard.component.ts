@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ITextInput } from 'src/app/interfaces/text-input.dt';
 
 @Component({
@@ -7,15 +8,6 @@ import { ITextInput } from 'src/app/interfaces/text-input.dt';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  public todoItemContent: ITextInput = {
-    codeType: 'AlphaText',
-    id: 'todo-item',
-    required: true,
-    label: 'Todo Item Title',
-    disabled: false,
-    placeholder: 'Todo Item Title',
-    formFieldName: 'todoTitle',
-  };
   constructor() {}
 
   ngOnInit(): void {}

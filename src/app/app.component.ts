@@ -14,6 +14,6 @@ export class AppComponent {
 
   constructor(private endpointService: EndpointService) {
     this.endpointService.setTodoList(this.todoList);
-    console.log(this.todoList);
+    // console.log(this.todoList);
   }
 }

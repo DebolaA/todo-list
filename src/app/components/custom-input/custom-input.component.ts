@@ -1,5 +1,16 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup } from '@angular/forms';
+import {
+  Component,
+  HostListener,
+  Input,
+  OnInit,
+  forwardRef,
+} from '@angular/core';
+import {
+  ControlValueAccessor,
+  FormControl,
+  FormGroup,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 import { ITextInput } from 'src/app/interfaces/text-input.dt';
 import {
   OnChangeFn,
@@ -10,12 +21,20 @@ import {
   selector: 'app-custom-input',
   templateUrl: './custom-input.component.html',
   styleUrls: ['./custom-input.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CustomInputComponent),
+      multi: true,
+    },
+  ],
 })
 export class CustomInputComponent implements ControlValueAccessor, OnInit {
   inputVal: string = '';
   disabled: boolean = false;
   @Input() todoItemContent: ITextInput | undefined = undefined;
   @Input() parentForm: FormGroup | undefined = undefined;
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -43,16 +62,20 @@ export class CustomInputComponent implements ControlValueAccessor, OnInit {
   }
 
   // Control Value Accessor Section
-  writeValue(obj: any): void {
-    throw new Error('Method not implemented.');
+  public writeValue(value: string): void {
+    if (value === null || value === undefined) {
+      this.inputVal = '';
+      return;
+    }
+    this.inputVal = value;
   }
-  registerOnChange(fn: any): void {
-    throw new Error('Method not implemented.');
+  public registerOnChange(fn: OnChangeFn<string>): void {
+    this.onChange = fn;
   }
-  registerOnTouched(fn: any): void {
-    throw new Error('Method not implemented.');
+  public registerOnTouched(fn: OnTouchFn): void {
+    this.onTouched = fn;
   }
-  setDisabledState?(isDisabled: boolean): void {
-    throw new Error('Method not implemented.');
+  public setDisabledState?(isDisabled: boolean): void {
+    if (this.todoItemContent) this.todoItemContent.disabled = false;
   }
 }
