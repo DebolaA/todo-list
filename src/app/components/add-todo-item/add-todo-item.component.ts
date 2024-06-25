@@ -16,12 +16,12 @@ export class AddTodoItemComponent implements OnInit {
     label: 'Todo Item Title',
     disabled: false,
     placeholder: 'Todo Item Title',
-    formFieldName: 'todoItemTitle',
+    formFieldName: 'todoTitle',
   };
 
   todoItemForm: FormGroup = new FormGroup({
-    todoItemTitle: new FormControl('', Validators.required),
-    todoItemDesc: new FormControl('', Validators.required),
+    todoTitle: new FormControl('', Validators.required),
+    todoDesc: new FormControl('', Validators.required),
   });
 
   constructor(private endpointService: EndpointService) {}
@@ -31,7 +31,6 @@ export class AddTodoItemComponent implements OnInit {
   onSubmit(): void {
     const val = this.todoItemForm.value;
     if (val) {
-      console.log(val);
       this.endpointService.createTodoItem(val);
     }
   }

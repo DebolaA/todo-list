@@ -129,13 +129,27 @@ input {
 }
 
 input[type="submit"],
-button {
-  min-width: 200px;
+button,
+.btn {
   margin-bottom: 10px;
+
+  &.icon-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  &.btn-lg {
+    min-width: 200px;
+  }
 
   &:disabled {
     pointer-events: none;
     border: 1px solid #ccc;
+  }
+
+  &:focus,
+  &:hover {
+    cursor: pointer;
   }
 }
 

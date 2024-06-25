@@ -4,7 +4,7 @@
       <app-custom-input
         [todoItemContent]="todoItemContent"
         [parentForm]="todoItemForm"
-        formControlName="todoItemTitle"
+        formControlName="todoTitle"
       ></app-custom-input>
       <div class="row">
         <div class="flex-container">
@@ -13,25 +13,25 @@
             for="todoDesc"
             [ngClass]="{
               error:
-                todoItemForm.get('todoItemDesc')?.invalid &&
-                (todoItemForm.get('todoItemDesc')?.dirty ||
-                  todoItemForm.get('todoItemDesc')?.touched)
+                todoItemForm.get('todoDesc')?.invalid &&
+                (todoItemForm.get('todoDesc')?.dirty ||
+                  todoItemForm.get('todoDesc')?.touched)
             }"
           >
             Description
           </label>
           <span
             *ngIf="
-              todoItemForm.get('todoItemDesc')?.invalid &&
-              (todoItemForm.get('todoItemDesc')?.dirty ||
-                todoItemForm.get('todoItemDesc')?.touched)
+              todoItemForm.get('todoDesc')?.invalid &&
+              (todoItemForm.get('todoDesc')?.dirty ||
+                todoItemForm.get('todoDesc')?.touched)
             "
             class="feedback form-control"
             [ngClass]="{
               error:
-                todoItemForm.get('todoItemDesc')?.invalid &&
-                (todoItemForm.get('todoItemDesc')?.dirty ||
-                  todoItemForm.get('todoItemDesc')?.touched)
+                todoItemForm.get('todoDesc')?.invalid &&
+                (todoItemForm.get('todoDesc')?.dirty ||
+                  todoItemForm.get('todoDesc')?.touched)
             }"
           >
             <svg
@@ -56,18 +56,19 @@
         <textarea
           name="todoDesc"
           id="todoDesc"
-          formControlName="todoItemDesc"
+          formControlName="todoDesc"
           class="form-control"
           [ngClass]="{
             error:
-              todoItemForm.get('todoItemDesc')?.invalid &&
-              (todoItemForm.get('todoItemDesc')?.dirty ||
-                todoItemForm.get('todoItemDesc')?.touched)
+              todoItemForm.get('todoDesc')?.invalid &&
+              (todoItemForm.get('todoDesc')?.dirty ||
+                todoItemForm.get('todoDesc')?.touched)
           }"
         ></textarea>
       </div>
       <div class="row">
         <input
+          class="btn-lg"
           type="submit"
           value="Add Item"
           [disabled]="todoItemForm.invalid"

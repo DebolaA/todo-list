@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
 
   todoItemList = new BehaviorSubject<ITodoItem[]>([]);
   todoItemList$ = this.todoItemList.asObservable();
+
   constructor(private endpointService: EndpointService) {}
 
   ngOnInit(): void {
@@ -38,15 +39,17 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteTodoItem(todoItem: ITodoItem) {
-    this.endpointService.deleteTodoItem(todoItem).subscribe({
-      next: (res: boolean) => {
-        if (res)
-          this.errorMessageSubject.next('Successfully deleted todo item');
-        else this.errorMessageSubject.next('Unable to delete todo item');
-      },
-      error: (error: any) => {
-        this.errorMessageSubject.next('Unable to delete todo item');
-      },
-    });
+    if (todoItem) {
+      this.endpointService.deleteTodoItem(todoItem).subscribe({
+        next: (res: boolean) => {
+          if (res)
+            this.errorMessageSubject.next('Successfully deleted todo item');
+          else this.errorMessageSubject.next('Unable to delete todo item');
+        },
+        error: (error: any) => {
+          this.errorMessageSubject.next('Unable to delete todo item');
+        },
+      });
+    }
   }
 }
