@@ -2,6 +2,9 @@
 
 This is an app that helps a user manage TODO list.
 
+Two directives have been created - TooltipDirective and the BckgndColorDirective - which can be applied to any HTML Element on the application.
+A custom input component has also been created which was used to showcase the created directives
+
 The Angular Frontend app was created using Angular cli
 
 Use the below command to install angular-cli:

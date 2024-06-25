@@ -9,6 +9,7 @@ import { COLORS } from '../model/color.dt';
 
 @Directive({
   selector: '[appBckgndColor]',
+  standalone: true,
 })
 export class BckgndColorDirective {
   @Input('backgndcolor') backgndcolor: string = '';

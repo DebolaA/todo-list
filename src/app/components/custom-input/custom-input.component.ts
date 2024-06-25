@@ -4,6 +4,7 @@ import {
   Input,
   OnInit,
   forwardRef,
+  inject,
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -11,6 +12,8 @@ import {
   FormGroup,
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
+import { BckgndColorDirective } from 'src/app/directives/bckgnd-color.directive';
+import { TooltipDirective } from 'src/app/directives/tooltip.directive';
 import { ITextInput } from 'src/app/interfaces/text-input.dt';
 import {
   OnChangeFn,
@@ -19,6 +22,11 @@ import {
 
 @Component({
   selector: 'app-custom-input',
+  hostDirectives: [
+    { directive: TooltipDirective },
+    { directive: BckgndColorDirective },
+  ],
+  standalone: true,
   templateUrl: './custom-input.component.html',
   styleUrls: ['./custom-input.component.scss'],
   providers: [
@@ -34,6 +42,9 @@ export class CustomInputComponent implements ControlValueAccessor, OnInit {
   disabled: boolean = false;
   @Input() todoItemContent: ITextInput | undefined = undefined;
   @Input() parentForm: FormGroup | undefined = undefined;
+  private readonly _tooltip: TooltipDirective = inject(TooltipDirective, {
+    self: true,
+  });
 
   constructor() {}
 
