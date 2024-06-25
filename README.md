@@ -1,22 +1,33 @@
 # TodoList
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1.
+This is an app that helps a user manage TODO list.
 
-## Development server
+The Angular Frontend app was created using Angular cli
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Use the below command to install angular-cli:
+`npm install -g @angular/cli`
 
-## Code scaffolding
+## How to clone this repository
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Install the master branch using the following command:
+`git clone https://github.com/DebolaA/todo-list.git`
 
-## Build
+OR
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Fork the repository
 
-## Running unit tests
+Once the repository is cloned, use the below command to install the modules:
+`npm install`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## To run the Angular Frontend
+
+Navigate to the root directory and run the below command to start the server
+`npm run start`
+
+## Running unit tests on backend api
+
+Navigate to the server directory and run the below command to start the server
+`npm run test`
 
 ## Running end-to-end tests
 
