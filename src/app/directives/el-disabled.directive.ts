@@ -1,4 +1,4 @@
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, Input, HostBinding } from '@angular/core';
 
 @Directive({
   selector: '[appElDisabled]',
