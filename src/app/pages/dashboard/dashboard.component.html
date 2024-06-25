@@ -1,5 +1,7 @@
 <app-add-todo-item></app-add-todo-item>
 <hr />
 <div class="todoItemList">
-  <div class="container"></div>
+  <div class="container" *ngIf="todoItemList$ | async as todoList">
+    <app-todo-item *ngFor="let item of todoList"></app-todo-item>
+  </div>
 </div>

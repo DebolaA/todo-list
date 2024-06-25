@@ -19,14 +19,15 @@ export class EndpointService {
   createTodoItem(item: ITodoItem): Observable<boolean> {
     let todoList: ITodoItem[] = this.todoList$.value;
     if (todoList) {
-      todoList.push(item);
+      // todoList.push(item);
+      todoList = [...todoList, item];
       this.todoList$.next(todoList);
       return of(true);
     }
     return of(false);
   }
 
-  deleteUser(item: ITodoItem): Observable<boolean> {
+  deleteTodoItem(item: ITodoItem): Observable<boolean> {
     let todoList: ITodoItem[] = this.todoList$.value;
     if (item) {
       const newList = todoList.filter(
@@ -39,7 +40,7 @@ export class EndpointService {
     return of(false);
   }
 
-  updateUser(item: ITodoItem): Observable<boolean> {
+  updateTodoItem(item: ITodoItem): Observable<boolean> {
     let todoList: ITodoItem[] = this.todoList$.value;
     if (todoList) {
       const index = todoList.findIndex(

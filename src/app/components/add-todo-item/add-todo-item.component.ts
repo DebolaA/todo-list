@@ -1,3 +1,4 @@
+import { EndpointService } from './../../services/endpoint.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ITextInput } from 'src/app/interfaces/text-input.dt';
@@ -22,12 +23,16 @@ export class AddTodoItemComponent implements OnInit {
     todoItemTitle: new FormControl('', Validators.required),
     todoItemDesc: new FormControl('', Validators.required),
   });
-  constructor() {}
+
+  constructor(private endpointService: EndpointService) {}
 
   ngOnInit(): void {}
 
   onSubmit(): void {
     const val = this.todoItemForm.value;
-    console.log(val);
+    if (val) {
+      console.log(val);
+      this.endpointService.createTodoItem(val);
+    }
   }
 }
