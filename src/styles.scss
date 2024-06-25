@@ -102,13 +102,12 @@ div.component-container {
 input {
   padding: 5px;
   height: 50px;
-  border-radius: 3px;
   background: #fdfdfd;
   border: 1px solid #597183;
+  border-radius: 10px;
 
   &.form-control {
     font-size: 20px;
-    border-radius: 10px;
   }
 
   &.error {
@@ -165,12 +164,16 @@ textarea {
 
 textarea {
   height: 150px;
+  border-radius: 10px;
 
   &.error {
     border: 1px solid #c62b2b;
   }
   &.form-control {
     font-size: 20px;
-    border-radius: 10px;
   }
+}
+
+.cancel {
+  text-decoration: line-through;
 }

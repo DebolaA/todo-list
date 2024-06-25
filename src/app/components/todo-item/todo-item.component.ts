@@ -12,11 +12,15 @@ export class TodoItemComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.todoItem);
-  }
+  ngOnInit(): void {}
 
   deleteTodoItem() {
     this.deleteEvent.emit(this.todoItem);
+  }
+  markTaskComplete(evt: Event) {
+    const item = document.querySelector(`#${this.todoItem?.todoTitle}`);
+    if (item) {
+      item.classList.toggle('cancel');
+    }
   }
 }

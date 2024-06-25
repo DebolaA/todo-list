@@ -80,7 +80,10 @@
         </g>
       </svg>
     </button>
-    <button class="list-item-icons-done icon-btn">
+    <button
+      class="list-item-icons-done icon-btn"
+      (click)="markTaskComplete($event)"
+    >
       <svg
         width="20px"
         height="20px"

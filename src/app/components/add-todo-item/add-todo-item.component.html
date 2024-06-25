@@ -58,6 +58,7 @@
           id="todoDesc"
           formControlName="todoDesc"
           class="form-control"
+          placeholder="Give To Do Item Details"
           [ngClass]="{
             error:
               todoItemForm.get('todoDesc')?.invalid &&
@@ -68,6 +69,8 @@
       </div>
       <div class="row">
         <input
+          appBckgndColor
+          [backgndcolor]="'success'"
           class="btn-lg"
           type="submit"
           value="Add Item"
