@@ -13,25 +13,25 @@
             for="todoDesc"
             [ngClass]="{
               error:
-                todoItemForm.get('todoDesc')?.invalid &&
-                (todoItemForm.get('todoDesc')?.dirty ||
-                  todoItemForm.get('todoDesc')?.touched)
+                todoItemForm.get('todoDescription')?.invalid &&
+                (todoItemForm.get('todoDescription')?.dirty ||
+                  todoItemForm.get('todoDescription')?.touched)
             }"
           >
             Description
           </label>
           <span
             *ngIf="
-              todoItemForm.get('todoDesc')?.invalid &&
-              (todoItemForm.get('todoDesc')?.dirty ||
-                todoItemForm.get('todoDesc')?.touched)
+              todoItemForm.get('todoDescription')?.invalid &&
+              (todoItemForm.get('todoDescription')?.dirty ||
+                todoItemForm.get('todoDescription')?.touched)
             "
             class="feedback form-control"
             [ngClass]="{
               error:
-                todoItemForm.get('todoDesc')?.invalid &&
-                (todoItemForm.get('todoDesc')?.dirty ||
-                  todoItemForm.get('todoDesc')?.touched)
+                todoItemForm.get('todoDescription')?.invalid &&
+                (todoItemForm.get('todoDescription')?.dirty ||
+                  todoItemForm.get('todoDescription')?.touched)
             }"
           >
             <svg
@@ -56,14 +56,14 @@
         <textarea
           name="todoDesc"
           id="todoDesc"
-          formControlName="todoDesc"
+          formControlName="todoDescription"
           class="form-control"
           placeholder="Give To Do Item Details"
           [ngClass]="{
             error:
-              todoItemForm.get('todoDesc')?.invalid &&
-              (todoItemForm.get('todoDesc')?.dirty ||
-                todoItemForm.get('todoDesc')?.touched)
+              todoItemForm.get('todoDescription')?.invalid &&
+              (todoItemForm.get('todoDescription')?.dirty ||
+                todoItemForm.get('todoDescription')?.touched)
           }"
         ></textarea>
       </div>
@@ -71,6 +71,7 @@
         <input
           appBckgndColor
           [backgndcolor]="'success'"
+          [eldisabled]="todoItemForm.invalid"
           class="btn-lg"
           type="submit"
           value="Add Item"

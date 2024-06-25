@@ -1,7 +1,7 @@
 import {
   Directive,
   ElementRef,
-  HostBinding,
+  HostListener,
   Input,
   Renderer2,
 } from '@angular/core';
@@ -12,9 +12,14 @@ import { COLORS } from '../model/color.dt';
 })
 export class BckgndColorDirective {
   @Input('backgndcolor') backgndcolor: string = '';
+  @Input('eldisabled') eldisabled: boolean = false;
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
   ngOnInit(): void {
+    this.updateBckgndColor();
+  }
+
+  @HostListener('change') ngOnChanges() {
     this.updateBckgndColor();
   }
 
@@ -25,7 +30,7 @@ export class BckgndColorDirective {
           this.renderer.setStyle(
             this.el.nativeElement,
             'background-color',
-            COLORS.primary
+            this.eldisabled ? COLORS.disabled : COLORS.primary
           );
           this.renderer.setStyle(
             this.el.nativeElement,
@@ -35,7 +40,7 @@ export class BckgndColorDirective {
           this.renderer.setStyle(
             this.el.nativeElement,
             'color',
-            `${COLORS.light}`
+            this.eldisabled ? COLORS.light : COLORS.primary
           );
         }
         break;
@@ -44,7 +49,7 @@ export class BckgndColorDirective {
           this.renderer.setStyle(
             this.el.nativeElement,
             'background-color',
-            COLORS.secondary
+            this.eldisabled ? COLORS.disabled : COLORS.secondary
           );
           this.renderer.setStyle(
             this.el.nativeElement,
@@ -54,7 +59,7 @@ export class BckgndColorDirective {
           this.renderer.setStyle(
             this.el.nativeElement,
             'color',
-            `${COLORS.light}`
+            this.eldisabled ? COLORS.secondary : COLORS.light
           );
         }
         break;
@@ -63,17 +68,17 @@ export class BckgndColorDirective {
           this.renderer.setStyle(
             this.el.nativeElement,
             'background-color',
-            COLORS.success
+            this.eldisabled ? COLORS.disabled : COLORS.success
           );
           this.renderer.setStyle(
             this.el.nativeElement,
             'border',
-            `${COLORS.success}`
+            `1px solid ${COLORS.success}`
           );
           this.renderer.setStyle(
             this.el.nativeElement,
             'color',
-            `${COLORS.light}`
+            this.eldisabled ? COLORS.success : COLORS.light
           );
         }
         break;
@@ -82,7 +87,7 @@ export class BckgndColorDirective {
           this.renderer.setStyle(
             this.el.nativeElement,
             'background-color',
-            COLORS.warning
+            this.eldisabled ? COLORS.disabled : COLORS.warning
           );
           this.renderer.setStyle(
             this.el.nativeElement,
@@ -92,7 +97,7 @@ export class BckgndColorDirective {
           this.renderer.setStyle(
             this.el.nativeElement,
             'color',
-            `${COLORS.light}`
+            this.eldisabled ? COLORS.warning : COLORS.light
           );
         }
         break;
@@ -101,7 +106,7 @@ export class BckgndColorDirective {
           this.renderer.setStyle(
             this.el.nativeElement,
             'background-color',
-            COLORS.danger
+            this.eldisabled ? COLORS.disabled : COLORS.danger
           );
           this.renderer.setStyle(
             this.el.nativeElement,
@@ -111,7 +116,7 @@ export class BckgndColorDirective {
           this.renderer.setStyle(
             this.el.nativeElement,
             'color',
-            `${COLORS.light}`
+            this.eldisabled ? COLORS.danger : COLORS.light
           );
         }
         break;
@@ -120,7 +125,7 @@ export class BckgndColorDirective {
           this.renderer.setStyle(
             this.el.nativeElement,
             'background-color',
-            COLORS.info
+            this.eldisabled ? COLORS.disabled : COLORS.info
           );
           this.renderer.setStyle(
             this.el.nativeElement,
@@ -130,7 +135,7 @@ export class BckgndColorDirective {
           this.renderer.setStyle(
             this.el.nativeElement,
             'color',
-            `${COLORS.light}`
+            this.eldisabled ? COLORS.info : COLORS.light
           );
         }
         break;
@@ -139,7 +144,7 @@ export class BckgndColorDirective {
           this.renderer.setStyle(
             this.el.nativeElement,
             'background-color',
-            COLORS.dark
+            this.eldisabled ? COLORS.dark : COLORS.disabled
           );
           this.renderer.setStyle(
             this.el.nativeElement,
@@ -149,7 +154,7 @@ export class BckgndColorDirective {
           this.renderer.setStyle(
             this.el.nativeElement,
             'color',
-            `${COLORS.light}`
+            this.eldisabled ? COLORS.dark : COLORS.light
           );
         }
         break;
@@ -158,7 +163,7 @@ export class BckgndColorDirective {
           this.renderer.setStyle(
             this.el.nativeElement,
             'background-color',
-            COLORS.light
+            this.eldisabled ? COLORS.light : COLORS.disabled
           );
           this.renderer.setStyle(
             this.el.nativeElement,
@@ -177,7 +182,7 @@ export class BckgndColorDirective {
           this.renderer.setStyle(
             this.el.nativeElement,
             'background-color',
-            COLORS.default
+            this.eldisabled ? COLORS.disabled : COLORS.default
           );
           this.renderer.setStyle(
             this.el.nativeElement,

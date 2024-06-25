@@ -2,20 +2,23 @@ import { BehaviorSubject, Observable, catchError, of } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ITodoItem } from 'src/app/interfaces/todo-item.dt';
 import { EndpointService } from 'src/app/services/endpoint.service';
+import { UnSub } from 'src/app/utils/unsubscribe';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent extends UnSub implements OnInit {
   errorMessageSubject = new BehaviorSubject<string>('');
   errorMessageAction$ = this.errorMessageSubject.asObservable();
 
   todoItemList = new BehaviorSubject<ITodoItem[]>([]);
   todoItemList$ = this.todoItemList.asObservable();
 
-  constructor(private endpointService: EndpointService) {}
+  constructor(private endpointService: EndpointService) {
+    super();
+  }
 
   ngOnInit(): void {
     this.getTodoItems();

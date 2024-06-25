@@ -21,7 +21,7 @@ export class AddTodoItemComponent implements OnInit {
 
   todoItemForm: FormGroup = new FormGroup({
     todoTitle: new FormControl('', Validators.required),
-    todoDesc: new FormControl('', Validators.required),
+    todoDescription: new FormControl('', Validators.required),
   });
 
   constructor(private endpointService: EndpointService) {}

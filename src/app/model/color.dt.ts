@@ -8,4 +8,5 @@ export enum COLORS {
   light = '#f8f9fa',
   dark = '#212529',
   default = '#597183',
+  disabled = '#fdfdfd',
 }
