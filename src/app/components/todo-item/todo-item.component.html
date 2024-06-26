@@ -3,11 +3,7 @@
     {{ todoItem?.todoTitle }}
   </div>
   <div class="list-item-info">
-    <button
-      class="list-item-info-icon icon-btn"
-      backgndcolor="iconBtn"
-      appTooltip
-    >
+    <button class="list-item-info-icon icon-btn" btnType="'info'" appTooltip>
       <svg
         height="20px"
         width="20px"
@@ -38,7 +34,7 @@
           />
         </g>
       </svg>
-      <span class="tooltip" backgndcolor="completeBtn">{{
+      <span class="tooltip" btnType="'primary'">{{
         todoItem?.todoDescription
       }}</span>
     </button>
@@ -46,7 +42,8 @@
   <div class="list-item-icons">
     <button
       class="list-item-icons-delete icon-btn"
-      backgndcolor="deleteBtn"
+      appButton
+      btnType="'danger'"
       (click)="deleteTodoItem()"
     >
       <svg
@@ -90,7 +87,7 @@
     </button>
     <button
       class="list-item-icons-done icon-btn"
-      backgndcolor="'primary'"
+      btnType="'primary'"
       (click)="markTaskComplete($event)"
     >
       <svg

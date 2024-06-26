@@ -1,6 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { BckgndColorDirective } from 'src/app/directives/bckgnd-color.directive';
-import { ElDisabledDirective } from 'src/app/directives/el-disabled.directive';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { ButtonDirective } from 'src/app/directives/button.directive';
 import { TooltipDirective } from 'src/app/directives/tooltip.directive';
 import { ITodoItem } from 'src/app/interfaces/todo-item.dt';
 
@@ -8,19 +14,16 @@ import { ITodoItem } from 'src/app/interfaces/todo-item.dt';
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.scss'],
-  hostDirectives: [
-    { directive: BckgndColorDirective, inputs: ['backgndcolor'] },
-    { directive: TooltipDirective },
-    { directive: ElDisabledDirective, inputs: ['elDisabled'] },
-  ],
   standalone: true,
+  hostDirectives: [
+    { directive: ButtonDirective },
+    { directive: TooltipDirective },
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoItemComponent implements OnInit {
   @Input() todoItem: ITodoItem | undefined;
   @Output() deleteEvent = new EventEmitter<ITodoItem>();
-  iconBtn: string = 'info';
-  deleteBtn: string = 'danger';
-  completeBtn: string = 'success';
 
   constructor() {}
 

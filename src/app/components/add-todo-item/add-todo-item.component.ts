@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { EndpointService } from './../../services/endpoint.service';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -9,23 +9,23 @@ import {
   Validators,
 } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { BckgndColorDirective } from 'src/app/directives/bckgnd-color.directive';
-import { ElDisabledDirective } from 'src/app/directives/el-disabled.directive';
-import { TooltipDirective } from 'src/app/directives/tooltip.directive';
-import { ITextInput } from 'src/app/interfaces/text-input.dt';
+import { ISubmitInput, ITextInput } from 'src/app/interfaces/text-input.dt';
 import { CustomInputModule } from '../custom-input/custom-input.module';
+import { CustomButtonComponent } from '../custom-button/custom-button.component';
 
 @Component({
   selector: 'app-add-todo-item',
   templateUrl: './add-todo-item.component.html',
   styleUrls: ['./add-todo-item.component.scss'],
-  hostDirectives: [
-    { directive: BckgndColorDirective, inputs: ['backgndcolor'] },
-    { directive: TooltipDirective },
-    { directive: ElDisabledDirective, inputs: ['elDisabled'] },
-  ],
   standalone: true,
-  imports: [CommonModule, CustomInputModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    CustomInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CustomButtonComponent,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddTodoItemComponent implements OnInit {
   errorMessageSubject = new BehaviorSubject<string>('');
@@ -40,11 +40,18 @@ export class AddTodoItemComponent implements OnInit {
     placeholder: 'Todo Item Title',
     formFieldName: 'todoTitle',
   };
-
   todoItemForm: FormGroup = new FormGroup({
     todoTitle: new FormControl('', Validators.required),
     todoDescription: new FormControl('', Validators.required),
   });
+
+  public submitBtnContent: ISubmitInput = {
+    codeType: 'Submit',
+    id: 'submitBtn',
+    name: 'submitBtn',
+    text: 'Add Item',
+    disabled: this.todoItemForm.invalid,
+  };
 
   constructor(private endpointService: EndpointService) {}
 

@@ -1,11 +1,11 @@
-import { Directive, Input, HostBinding, HostListener } from '@angular/core';
+import { Directive, HostBinding, HostListener, Input } from '@angular/core';
 
 @Directive({
-  selector: '[appElDisabled]',
+  selector: '[appDisabled]',
   standalone: true,
 })
-export class ElDisabledDirective {
-  @HostBinding('class.disable')
+export class DisabledDirective {
+  @HostBinding('attr.elDisabled')
   @Input()
   elDisabled: boolean = false;
 
@@ -13,6 +13,7 @@ export class ElDisabledDirective {
 
   @HostListener('click', ['$event'])
   onClick(event: Event) {
+    console.log(this.elDisabled);
     if (!this.elDisabled) {
       event.preventDefault();
       event.stopPropagation();

@@ -9,78 +9,88 @@ import {
 import { COLORS } from '../model/color.dt';
 
 @Directive({
-  selector: '[appBckgndColor]',
+  selector: '[appBtnType]',
   standalone: true,
 })
-export class BckgndColorDirective {
-  @Input() backgndcolor: string = COLORS.default;
+export class BtnTypeDirective {
+  @HostBinding('attr.btnType')
+  @Input()
+  btnType: string = 'default';
+  backgndColor: string = '';
   color: string = COLORS.default;
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
   ngOnInit(): void {
+    console.log(this.btnType);
     this.updateBckgndColor();
   }
 
-  @HostListener('change') ngOnChanges() {
-    this.updateBckgndColor();
-  }
+  // @HostListener('change') ngOnChanges() {
+  //   console.log(this.btnType);
+  //   this.updateBckgndColor();
+  // }
 
-  @HostBinding('style.backgroundColor') backgroundColor = this.backgndcolor;
-  @HostBinding('style.border') border = `1px solid ${this.backgndcolor}`;
+  @HostBinding('style.backgroundColor') backgroundColor = this.backgndColor;
+  @HostBinding('style.border') border = `1px solid ${this.backgndColor}`;
 
   updateBckgndColor() {
-    switch (this.backgndcolor) {
+    switch (this.btnType) {
       case 'primary':
         {
-          this.backgndcolor = COLORS.primary;
+          this.backgndColor = COLORS.primary;
           this.color = COLORS.light;
         }
         break;
       case 'secondary':
         {
-          this.backgndcolor = COLORS.secondary;
+          this.backgndColor = COLORS.secondary;
           this.color = COLORS.light;
         }
         break;
       case 'success':
         {
-          this.backgndcolor = COLORS.success;
+          this.backgndColor = COLORS.success;
           this.color = COLORS.light;
+          this.renderer.setStyle(
+            this.el.nativeElement,
+            'background-color',
+            COLORS.success
+          );
         }
         break;
       case 'warning':
         {
-          this.backgndcolor = COLORS.warning;
+          this.backgndColor = COLORS.warning;
           this.color = COLORS.light;
         }
         break;
       case 'danger':
         {
-          this.backgndcolor = COLORS.danger;
+          this.backgndColor = COLORS.danger;
           this.color = COLORS.light;
         }
         break;
       case 'info':
         {
-          this.backgndcolor = COLORS.info;
+          this.backgndColor = COLORS.info;
           this.color = COLORS.light;
         }
         break;
       case 'dark':
         {
-          this.backgndcolor = COLORS.dark;
+          this.backgndColor = COLORS.dark;
           this.color = COLORS.light;
         }
         break;
       case 'light':
         {
-          this.backgndcolor = COLORS.light;
+          this.backgndColor = COLORS.light;
           this.color = COLORS.dark;
         }
         break;
       default:
         {
-          this.backgndcolor = COLORS.default;
+          this.backgndColor = COLORS.default;
           this.color = COLORS.dark;
         }
         break;

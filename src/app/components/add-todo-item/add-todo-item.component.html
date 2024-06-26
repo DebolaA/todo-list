@@ -74,14 +74,11 @@
         ></textarea>
       </div>
       <div class="row">
-        <input
-          backgndcolor="'success'"
-          elDisabled="todoItemForm.invalid"
-          class="btn-lg"
-          type="submit"
-          value="Add Item"
-          [disabled]="todoItemForm.invalid"
-        />
+        <input class="btn-lg" type="submit" value="Add Item" />
+        &nbsp;
+        <app-custom-button
+          [buttonContent]="submitBtnContent"
+        ></app-custom-button>
       </div>
     </form>
   </div>

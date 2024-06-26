@@ -1,0 +1,11 @@
+<input
+  type="submit"
+  class="btn-lg"
+  [id]="buttonContent?.id"
+  [name]="buttonContent?.name"
+  value="{{ buttonContent?.text }}"
+  appButton
+  elDisabled="disabled"
+  btnType="'success'"
+/>
+<span class="tooltip">{{ buttonContent?.tooltip }}</span>
