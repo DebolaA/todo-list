@@ -1,6 +1,7 @@
 import {
   Directive,
   ElementRef,
+  HostBinding,
   HostListener,
   Input,
   Renderer2,
@@ -12,8 +13,8 @@ import { COLORS } from '../model/color.dt';
   standalone: true,
 })
 export class BckgndColorDirective {
-  @Input('backgndcolor') backgndcolor: string = '';
-  @Input('eldisabled') eldisabled: boolean = false;
+  @Input() backgndcolor: string = COLORS.default;
+  color: string = COLORS.default;
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
   ngOnInit(): void {
@@ -24,177 +25,63 @@ export class BckgndColorDirective {
     this.updateBckgndColor();
   }
 
+  @HostBinding('style.backgroundColor') backgroundColor = this.backgndcolor;
+  @HostBinding('style.border') border = `1px solid ${this.backgndcolor}`;
+
   updateBckgndColor() {
     switch (this.backgndcolor) {
       case 'primary':
         {
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'background-color',
-            this.eldisabled ? COLORS.disabled : COLORS.primary
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'border',
-            `1px solid ${COLORS.primary}`
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'color',
-            this.eldisabled ? COLORS.light : COLORS.primary
-          );
+          this.backgndcolor = COLORS.primary;
+          this.color = COLORS.light;
         }
         break;
       case 'secondary':
         {
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'background-color',
-            this.eldisabled ? COLORS.disabled : COLORS.secondary
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'border',
-            `1px solid ${COLORS.secondary}`
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'color',
-            this.eldisabled ? COLORS.secondary : COLORS.light
-          );
+          this.backgndcolor = COLORS.secondary;
+          this.color = COLORS.light;
         }
         break;
       case 'success':
         {
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'background-color',
-            this.eldisabled ? COLORS.disabled : COLORS.success
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'border',
-            `1px solid ${COLORS.success}`
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'color',
-            this.eldisabled ? COLORS.success : COLORS.light
-          );
+          this.backgndcolor = COLORS.success;
+          this.color = COLORS.light;
         }
         break;
       case 'warning':
         {
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'background-color',
-            this.eldisabled ? COLORS.disabled : COLORS.warning
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'border',
-            `1px solid ${COLORS.warning}`
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'color',
-            this.eldisabled ? COLORS.warning : COLORS.light
-          );
+          this.backgndcolor = COLORS.warning;
+          this.color = COLORS.light;
         }
         break;
       case 'danger':
         {
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'background-color',
-            this.eldisabled ? COLORS.disabled : COLORS.danger
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'border',
-            `1px solid ${COLORS.danger}`
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'color',
-            this.eldisabled ? COLORS.danger : COLORS.light
-          );
+          this.backgndcolor = COLORS.danger;
+          this.color = COLORS.light;
         }
         break;
       case 'info':
         {
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'background-color',
-            this.eldisabled ? COLORS.disabled : COLORS.info
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'border',
-            `1px solid ${COLORS.info}`
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'color',
-            this.eldisabled ? COLORS.info : COLORS.light
-          );
+          this.backgndcolor = COLORS.info;
+          this.color = COLORS.light;
         }
         break;
       case 'dark':
         {
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'background-color',
-            this.eldisabled ? COLORS.dark : COLORS.disabled
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'border',
-            `1px solid ${COLORS.dark}`
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'color',
-            this.eldisabled ? COLORS.dark : COLORS.light
-          );
+          this.backgndcolor = COLORS.dark;
+          this.color = COLORS.light;
         }
         break;
       case 'light':
         {
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'background-color',
-            this.eldisabled ? COLORS.light : COLORS.disabled
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'border',
-            `1px solid ${COLORS.light}`
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'color',
-            `${COLORS.dark}`
-          );
+          this.backgndcolor = COLORS.light;
+          this.color = COLORS.dark;
         }
         break;
       default:
         {
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'background-color',
-            this.eldisabled ? COLORS.disabled : COLORS.default
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'border',
-            `1px solid ${COLORS.default}`
-          );
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'color',
-            `${COLORS.dark}`
-          );
+          this.backgndcolor = COLORS.default;
+          this.color = COLORS.dark;
         }
         break;
     }

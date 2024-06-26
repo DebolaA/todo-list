@@ -5,9 +5,7 @@
   <div class="list-item-info">
     <button
       class="list-item-info-icon icon-btn"
-      appBckgndColor
-      [eldisabled]="false"
-      [backgndcolor]="'info'"
+      backgndcolor="iconBtn"
       appTooltip
     >
       <svg
@@ -40,21 +38,15 @@
           />
         </g>
       </svg>
-      <span
-        class="tooltip"
-        appBckgndColor
-        [eldisabled]="false"
-        [backgndcolor]="'success'"
-        >{{ todoItem?.todoDescription }}</span
-      >
+      <span class="tooltip" backgndcolor="completeBtn">{{
+        todoItem?.todoDescription
+      }}</span>
     </button>
   </div>
   <div class="list-item-icons">
     <button
       class="list-item-icons-delete icon-btn"
-      appBckgndColor
-      [eldisabled]="false"
-      [backgndcolor]="'danger'"
+      backgndcolor="deleteBtn"
       (click)="deleteTodoItem()"
     >
       <svg
@@ -98,9 +90,7 @@
     </button>
     <button
       class="list-item-icons-done icon-btn"
-      appBckgndColor
-      [eldisabled]="false"
-      [backgndcolor]="'primary'"
+      backgndcolor="'primary'"
       (click)="markTaskComplete($event)"
     >
       <svg

@@ -26,7 +26,6 @@ import {
     { directive: TooltipDirective },
     { directive: BckgndColorDirective },
   ],
-  standalone: true,
   templateUrl: './custom-input.component.html',
   styleUrls: ['./custom-input.component.scss'],
   providers: [

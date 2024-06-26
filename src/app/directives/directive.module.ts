@@ -2,10 +2,11 @@
 // import { CommonModule } from '@angular/common';
 // import { BckgndColorDirective } from './bckgnd-color.directive';
 // import { TooltipDirective } from './tooltip.directive';
+// import { ElDisabledDirective } from './el-disabled.directive';
 
 // @NgModule({
-//   declarations: [BckgndColorDirective, TooltipDirective],
+//   declarations: [BckgndColorDirective, TooltipDirective, ElDisabledDirective],
 //   imports: [CommonModule],
-//   exports: [BckgndColorDirective, TooltipDirective],
+//   exports: [BckgndColorDirective, TooltipDirective, ElDisabledDirective],
 // })
 // export class DirectiveModule {}

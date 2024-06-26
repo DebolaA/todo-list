@@ -1,4 +1,10 @@
 <div class="component-container">
+  <div
+    class="error-message"
+    *ngIf="errorMessageAction$ | async as errorMessage"
+  >
+    {{ errorMessage }}
+  </div>
   <div class="jumbotron">
     <form class="form" [formGroup]="todoItemForm" (ngSubmit)="onSubmit()">
       <app-custom-input
@@ -69,9 +75,8 @@
       </div>
       <div class="row">
         <input
-          appBckgndColor
-          [backgndcolor]="'success'"
-          [eldisabled]="todoItemForm.invalid"
+          backgndcolor="'success'"
+          elDisabled="todoItemForm.invalid"
           class="btn-lg"
           type="submit"
           value="Add Item"

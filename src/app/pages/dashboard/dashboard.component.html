@@ -1,6 +1,7 @@
 <app-add-todo-item></app-add-todo-item>
 <hr />
 <div class="todoItemList">
+  <h1 class="text-center">TO DO LIST</h1>
   <ng-container class="container" *ngIf="todoItemList$ | async as todoList">
     <app-todo-item
       *ngFor="let item of todoList"
