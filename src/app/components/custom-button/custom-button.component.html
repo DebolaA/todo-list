@@ -4,8 +4,9 @@
   [id]="buttonContent?.id"
   [name]="buttonContent?.name"
   value="{{ buttonContent?.text }}"
-  appButton
-  elDisabled="disabled"
-  btnType="'success'"
 />
-<span class="tooltip">{{ buttonContent?.tooltip }}</span>
+<span
+  *ngIf="buttonContent?.tooltip && buttonContent?.tooltip?.length"
+  class="tooltip"
+  >{{ buttonContent?.tooltip }}</span
+>

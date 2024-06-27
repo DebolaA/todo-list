@@ -6,8 +6,6 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { ButtonDirective } from 'src/app/directives/button.directive';
-import { TooltipDirective } from 'src/app/directives/tooltip.directive';
 import { ITodoItem } from 'src/app/interfaces/todo-item.dt';
 
 @Component({
@@ -15,10 +13,6 @@ import { ITodoItem } from 'src/app/interfaces/todo-item.dt';
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.scss'],
   standalone: true,
-  hostDirectives: [
-    { directive: ButtonDirective },
-    { directive: TooltipDirective },
-  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoItemComponent implements OnInit {

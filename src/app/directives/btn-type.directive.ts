@@ -1,11 +1,4 @@
-import {
-  Directive,
-  ElementRef,
-  HostBinding,
-  HostListener,
-  Input,
-  Renderer2,
-} from '@angular/core';
+import { Directive, ElementRef, HostBinding, Input } from '@angular/core';
 import { COLORS } from '../model/color.dt';
 
 @Directive({
@@ -19,19 +12,10 @@ export class BtnTypeDirective {
   backgndColor: string = '';
   color: string = COLORS.default;
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  constructor(private el: ElementRef<HTMLElement>) {}
   ngOnInit(): void {
-    console.log(this.btnType);
     this.updateBckgndColor();
   }
-
-  // @HostListener('change') ngOnChanges() {
-  //   console.log(this.btnType);
-  //   this.updateBckgndColor();
-  // }
-
-  @HostBinding('style.backgroundColor') backgroundColor = this.backgndColor;
-  @HostBinding('style.border') border = `1px solid ${this.backgndColor}`;
 
   updateBckgndColor() {
     switch (this.btnType) {
@@ -51,11 +35,6 @@ export class BtnTypeDirective {
         {
           this.backgndColor = COLORS.success;
           this.color = COLORS.light;
-          this.renderer.setStyle(
-            this.el.nativeElement,
-            'background-color',
-            COLORS.success
-          );
         }
         break;
       case 'warning':
@@ -95,5 +74,9 @@ export class BtnTypeDirective {
         }
         break;
     }
+
+    this.el.nativeElement.style.backgroundColor = this.backgndColor;
+    this.el.nativeElement.style.border = `1px solid ${this.backgndColor}`;
+    this.el.nativeElement.style.color = this.color;
   }
 }

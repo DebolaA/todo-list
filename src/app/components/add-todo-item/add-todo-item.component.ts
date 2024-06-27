@@ -52,6 +52,7 @@ export class AddTodoItemComponent implements OnInit {
     text: 'Add Item',
     disabled: this.todoItemForm.invalid,
   };
+  submitBtnDisabled: boolean = this.todoItemForm?.invalid;
 
   constructor(private endpointService: EndpointService) {}
 

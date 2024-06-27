@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -6,6 +7,7 @@ import {
   Input,
   OnInit,
   Output,
+  input,
 } from '@angular/core';
 import { ButtonDirective } from 'src/app/directives/button.directive';
 import { TooltipDirective } from 'src/app/directives/tooltip.directive';
@@ -16,13 +18,13 @@ import { ISubmitInput } from 'src/app/interfaces/text-input.dt';
   standalone: true,
   templateUrl: './custom-button.component.html',
   styleUrl: './custom-button.component.scss',
-  hostDirectives: [ButtonDirective, TooltipDirective],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule],
+  hostDirectives: [ButtonDirective],
 })
 export class CustomButtonComponent implements OnInit {
   @Input() buttonContent: ISubmitInput | undefined = undefined;
+  @Input() disabled: boolean = false;
   @Output() clickEvent = new EventEmitter<ISubmitInput>();
-  disabled: boolean = false;
 
   @HostListener('blur')
   @HostListener('focus')
@@ -30,13 +32,8 @@ export class CustomButtonComponent implements OnInit {
 
   @HostListener('click')
   onClickBtn(event: Event): void {
-    console.log('click');
     this.clickEvent.emit(this.buttonContent);
   }
 
-  ngOnInit(): void {
-    this.disabled = this.buttonContent?.disabled
-      ? this.buttonContent?.disabled
-      : false;
-  }
+  ngOnInit(): void {}
 }
