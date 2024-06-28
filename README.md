@@ -2,8 +2,10 @@
 
 This is an app that helps a user manage TODO list.
 
-Two directives have been created - TooltipDirective and the BckgndColorDirective - which can be applied to any HTML Element on the application.
-A custom input component has also been created which was used to showcase the created directives
+Directives created include - TooltipDirective, ButtonTypeDirective, DisabledDirective and a host directive called ButtonDirective.
+The ButtonDirective hosts DisabledDirective and ButtonTypeDirective. The ButtonDirective has be applied to all buttons in the application.
+
+Two custom components - CustomButtonComponent and CustomInputComponent - were created which was used to showcase the created directives
 
 The Angular Frontend app was created using Angular cli
 

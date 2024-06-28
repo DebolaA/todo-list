@@ -9,7 +9,6 @@ import {
 import { ISubmitInput } from 'src/app/interfaces/text-input.dt';
 import { ITodoItem } from 'src/app/interfaces/todo-item.dt';
 import { CustomButtonComponent } from '../custom-button/custom-button.component';
-import { infoIcon } from 'src/app/utils/icon';
 
 @Component({
   selector: 'app-todo-item',
