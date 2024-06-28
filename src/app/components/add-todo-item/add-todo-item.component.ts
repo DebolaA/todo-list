@@ -10,8 +10,9 @@ import {
 } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { ISubmitInput, ITextInput } from 'src/app/interfaces/text-input.dt';
-import { CustomInputModule } from '../custom-input/custom-input.module';
 import { CustomButtonComponent } from '../custom-button/custom-button.component';
+import { CustomInputComponent } from '../custom-input/custom-input.component';
+import { CustomInputModule } from '../custom-input/custom-input.module';
 
 @Component({
   selector: 'app-add-todo-item',
@@ -20,10 +21,10 @@ import { CustomButtonComponent } from '../custom-button/custom-button.component'
   standalone: true,
   imports: [
     CommonModule,
-    CustomInputModule,
     FormsModule,
     ReactiveFormsModule,
     CustomButtonComponent,
+    CustomInputModule,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -40,6 +41,7 @@ export class AddTodoItemComponent implements OnInit {
     placeholder: 'Todo Item Title',
     formFieldName: 'todoTitle',
   };
+
   todoItemForm: FormGroup = new FormGroup({
     todoTitle: new FormControl('', Validators.required),
     todoDescription: new FormControl('', Validators.required),
@@ -51,7 +53,9 @@ export class AddTodoItemComponent implements OnInit {
     name: 'submitBtn',
     text: 'Add Item',
     disabled: this.todoItemForm.invalid,
+    class: 'btn-lg',
   };
+
   submitBtnDisabled: boolean = this.todoItemForm?.invalid;
 
   constructor(private endpointService: EndpointService) {}

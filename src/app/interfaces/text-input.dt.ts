@@ -32,4 +32,5 @@ export interface ISubmitInput {
   text: string;
   disabled: boolean;
   tooltip?: string;
+  class?: string;
 }

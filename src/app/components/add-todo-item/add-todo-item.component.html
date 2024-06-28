@@ -6,7 +6,7 @@
     {{ errorMessage }}
   </div>
   <div class="jumbotron">
-    <form class="form" [formGroup]="todoItemForm" (ngSubmit)="onSubmit()">
+    <form class="form" [formGroup]="todoItemForm">
       <app-custom-input
         [todoItemContent]="todoItemContent"
         [parentForm]="todoItemForm"
@@ -74,21 +74,13 @@
         ></textarea>
       </div>
       <div class="row">
-        <!-- <input
-          class="btn-lg"
-          type="submit"
-          value="Add Item"
-          appButton
-          btnType="'success'"
-          elDisabled="submitBtnDisabled"
-        /> -->
-        &nbsp;
         <app-custom-button
           [buttonContent]="submitBtnContent"
           [disabled]="submitBtnDisabled"
           appButton
           btnType="success"
           [elDisabled]="todoItemForm.invalid"
+          (clickEvent)="onSubmit()"
         ></app-custom-button>
       </div>
     </form>

@@ -1,10 +1,11 @@
-<input
-  type="submit"
-  class="btn-lg"
+<button
+  [type]="buttonContent?.codeType"
+  [class]="buttonContent?.class"
   [id]="buttonContent?.id"
   [name]="buttonContent?.name"
-  value="{{ buttonContent?.text }}"
-/>
+>
+  <ng-content></ng-content>{{ buttonContent?.text }}
+</button>
 <span
   *ngIf="buttonContent?.tooltip && buttonContent?.tooltip?.length"
   class="tooltip"
